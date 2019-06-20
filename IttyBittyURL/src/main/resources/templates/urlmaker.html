@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Itty Bitty URL Creator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<table class="center">
+	<tr><td class="header">
+		URLs
+	</td></tr>
+	<tr><td>
+		<div class="input">
+		    <form action="#" th:action="@{/urlmaker}" th:object="${urlmaker}" method="post">
+		    	<p><input type="url" th:field="*{uRL}" class="url"/></p>
+                <p th:if="${#fields.hasErrors('uRL')}" th:errors="*{uRL}" class="error">Error: Long URL is not a valid URL</p>
+		        <p><input type="submit" value="Create URL" class="create"/></p>
+		    </form>
+	    </div>
+	</td></tr>
+	<tr><td class="data">
+		<table class="maxwidth" >
+     			<tr>
+     				<td class="value dataheader">Original URL</td>
+     				<td class="key dataheader">Tiny URL</td>
+     				<td class="count dataheader">Hit Count</td>
+     			</tr>
+		</table>
+	    <div th:each="map : ${ittyBittyURLS}">
+     		<table class="maxwidth">
+     		<tbody>
+     			<tr th:each="mapEntry : ${map}"> 
+         			<td th:text="${mapEntry.value.getURL()}" class="value"></td>
+         			<td class="key"><a th:href="'t/' + ${mapEntry.key}" th:text="'http://localhost:8080/t/' + ${mapEntry.key}"></a></td> 
+         			<td th:text="${mapEntry.value.getCount()}" class="count"></td>
+     			</tr>
+     			</tbody>
+     		</table>
+		</div>
+	</td></tr>
+	</table>
+</body>
+</html>
