@@ -9,5 +9,4 @@ public class IttyBittyUrlApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(IttyBittyUrlApplication.class, args);
 	}
-
 }
