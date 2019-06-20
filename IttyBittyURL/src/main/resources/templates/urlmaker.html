@@ -16,10 +16,8 @@
 					<form action="#" th:action="@{/urlmaker}" th:object="${urlmaker}"
 						method="post">
 						<p>
-							<input type=text th:field="*{uRL}" class="url" />
+							<input type=url th:field="*{uRL}" class="url" />
 						</p>
-						<p th:if="${#fields.hasErrors('uRL')}" th:errors="*{uRL}"
-							class="error">Error: Long URL is not a valid URL</p>
 						<p>
 							<input type="submit" value="Create URL" class="create" />
 						</p>
